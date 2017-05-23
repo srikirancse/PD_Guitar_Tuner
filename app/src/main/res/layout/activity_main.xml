@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.soundplay.martin.oreillytuner.MainActivity"
+    android:background="@android:color/background_dark">
+
+    <GridLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:rowCount="2"
+        android:columnCount="3"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/notesButtonsGrid">
+        <Button
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:text="E"
+            android:id="@+id/e_button"
+            android:background="@android:color/holo_blue_dark"
+            android:layout_marginEnd="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp" />
+        <Button
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:text="A"
+            android:id="@+id/a_button"
+            android:background="@android:color/holo_blue_dark"
+            android:layout_marginEnd="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp" />
+        <Button
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:text="D"
+            android:id="@+id/d_button"
+            android:background="@android:color/holo_blue_dark"
+            android:layout_marginEnd="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp" />
+        <Button
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:text="G"
+            android:id="@+id/g_button"
+            android:background="@android:color/holo_blue_dark"
+            android:layout_marginEnd="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp" />
+        <Button
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:text="B"
+            android:id="@+id/b_button"
+            android:background="@android:color/holo_blue_dark"
+            android:layout_marginEnd="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp" />
+        <Button
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:text="E"
+            android:id="@+id/e2_button"
+            android:background="@android:color/holo_blue_dark"
+            android:layout_marginEnd="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp" />
+    </GridLayout>
+
+    <TextView
+        android:layout_width="300sp"
+        android:layout_height="30sp"
+        android:layout_below="@id/notesButtonsGrid"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:text="User Message"
+        android:textColor="@android:color/white"
+        android:textSize="17sp"
+        android:textAlignment="center"
+        android:id="@+id/userMessage"/>
+
+    <com.soundplay.martin.oreillytuner.PitchView
+        android:layout_width="250sp"
+        android:layout_height="250sp"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="10dp"
+        android:layout_below="@id/userMessage"
+        android:id="@+id/pitchGraph"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/pitchLabel"
+        android:text="Pitch"
+        android:layout_below="@id/pitchGraph"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:background="@android:color/holo_blue_dark"
+        android:textSize="30sp" />
+
+</RelativeLayout>
