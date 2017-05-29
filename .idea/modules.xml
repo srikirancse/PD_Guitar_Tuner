@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/OReillyTuner.iml" filepath="$PROJECT_DIR$/OReillyTuner.iml" />
+      <module fileurl="file://$PROJECT_DIR$/PD_Guitar_Tuner.iml" filepath="$PROJECT_DIR$/PD_Guitar_Tuner.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>

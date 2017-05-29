@@ -4,7 +4,11 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
+import android.content.pm.PackageManager;
 import android.os.IBinder;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
+import android.support.v4.content.PermissionChecker;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.telephony.PhoneStateListener;
@@ -23,6 +27,7 @@ import org.puredata.core.utils.IoUtils;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.jar.Manifest;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -33,11 +38,24 @@ public class MainActivity extends AppCompatActivity {
     private TextView pitchLabelTextView;
     private TextView userMessageView;
     private PitchView pitchView;
+    private final int RECORD_AUDIO_PERMISSION = 1;
+    private final int READ_PHONE_STATE_PERMISSION=2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         initGUI();
+
+        if(ContextCompat.checkSelfPermission(getApplicationContext(),
+                android.Manifest.permission.RECORD_AUDIO)!= PackageManager.PERMISSION_GRANTED){
+            ActivityCompat.requestPermissions(this,new String[]{android.Manifest.permission.RECORD_AUDIO},RECORD_AUDIO_PERMISSION);
+        }
+
+        if(ContextCompat.checkSelfPermission(getApplicationContext(),
+                android.Manifest.permission.READ_PHONE_STATE)!= PackageManager.PERMISSION_GRANTED){
+            ActivityCompat.requestPermissions(this,new String[]{android.Manifest.permission.READ_PHONE_STATE}, READ_PHONE_STATE_PERMISSION);
+        }
+
         pdConnection = new ServiceConnection() {
             @Override
             public void onServiceConnected(ComponentName name, IBinder service) {
@@ -58,6 +76,22 @@ public class MainActivity extends AppCompatActivity {
         };
         bindService(new Intent(this, PdService.class),pdConnection,BIND_AUTO_CREATE);
         initSystemServices();
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int RequestCode, String perissions[],int[] grantResults){
+        switch(RequestCode){
+            case RECORD_AUDIO_PERMISSION:
+                if(grantResults.length>0 && grantResults[0]!= PackageManager.PERMISSION_GRANTED){
+
+                }
+                break;
+            case READ_PHONE_STATE_PERMISSION:
+                if(grantResults.length>0 && grantResults[0]!= PackageManager.PERMISSION_GRANTED){
+
+                }
+                break;
+        }
     }
 
     private String[] noteStrings = new String[] {"C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"};
